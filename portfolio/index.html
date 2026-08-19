@@ -35,6 +35,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Waveform Bar Styling */
+        .wave-bar {
+            transition: height 0.2s ease, background-color 0.2s ease;
+        }
     </style>
 </head>
 <body class="bg-neutral-950 text-gray-100 flex flex-col min-h-screen antialiased selection:bg-amber-500 selection:text-black">
@@ -98,56 +102,86 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Track Card 1 -->
-                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-2 group shadow-xl">
-                    <div class="relative mb-5 rounded-xl overflow-hidden bg-neutral-800 aspect-video flex items-center justify-center border border-neutral-700/50">
-                        <i class="fa-solid fa-compact-disc text-6xl text-amber-500/40 group-hover:rotate-180 transition-transform duration-700"></i>
-                        <span class="absolute top-3 left-3 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                            Afrobeats
-                        </span>
+                <!-- SOUNDCLOUD STYLE TRACK CARD 1 -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                Afrobeats
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">3:24</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">Mombasa Sunset</h3>
+                        <p class="text-sm text-gray-400 mb-6">Produced, Mixed & Mastered at Cleo Studios</p>
                     </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-1">Mombasa Sunset</h3>
-                    <p class="text-sm text-gray-400 mb-4">Produced, Mixed & Mastered at Cleo Studios</p>
-                    
-                    <!-- Native Audio Player Container -->
-                    <audio controls class="w-full h-10 rounded-lg accent-amber-500 bg-neutral-800">
-                        <source src="/audio/sample-1.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+
+                    <!-- Hidden Audio Tag -->
+                    <audio id="audio-1" src="/audio/sample-1.mp3"></audio>
+
+                    <!-- SOUNDCLOUD STYLE WAVEFORM PLAYER -->
+                    <div class="bg-neutral-950 border border-neutral-800 rounded-xl p-4 flex items-center space-x-4">
+                        <!-- Play/Pause Button -->
+                        <button onclick="toggleAudio('audio-1', 'btn-1', 'wave-container-1')" id="btn-1" class="w-12 h-12 rounded-full bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center shrink-0 shadow-lg transition-transform active:scale-95">
+                            <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                        </button>
+
+                        <!-- Soundcloud Waves Container -->
+                        <div id="wave-container-1" class="flex-1 h-12 flex items-center gap-[3px] cursor-pointer" onclick="seekAudio(event, 'audio-1')">
+                            <!-- JS will populate interactive bars -->
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Track Card 2 -->
-                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-2 group shadow-xl">
-                    <div class="relative mb-5 rounded-xl overflow-hidden bg-neutral-800 aspect-video flex items-center justify-center border border-neutral-700/50">
-                        <i class="fa-solid fa-music text-6xl text-amber-500/40 group-hover:scale-110 transition-transform duration-500"></i>
-                        <span class="absolute top-3 left-3 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                            Amapiano
-                        </span>
+                <!-- SOUNDCLOUD STYLE TRACK CARD 2 -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                Amapiano
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">2:50</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">Bamburi Nights</h3>
+                        <p class="text-sm text-gray-400 mb-6">Beat Production & Vocal Recording</p>
                     </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-1">Bamburi Nights</h3>
-                    <p class="text-sm text-gray-400 mb-4">Beat Production & Vocal Recording</p>
-                    
-                    <audio controls class="w-full h-10 rounded-lg accent-amber-500 bg-neutral-800">
-                        <source src="/audio/sample-2.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+
+                    <audio id="audio-2" src="/audio/sample-2.mp3"></audio>
+
+                    <div class="bg-neutral-950 border border-neutral-800 rounded-xl p-4 flex items-center space-x-4">
+                        <button onclick="toggleAudio('audio-2', 'btn-2', 'wave-container-2')" id="btn-2" class="w-12 h-12 rounded-full bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center shrink-0 shadow-lg transition-transform active:scale-95">
+                            <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                        </button>
+
+                        <div id="wave-container-2" class="flex-1 h-12 flex items-center gap-[3px] cursor-pointer" onclick="seekAudio(event, 'audio-2')">
+                            <!-- JS will populate interactive bars -->
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Track Card 3 -->
-                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-2 group shadow-xl">
-                    <div class="relative mb-5 rounded-xl overflow-hidden bg-neutral-800 aspect-video flex items-center justify-center border border-neutral-700/50">
-                        <i class="fa-solid fa-sliders text-6xl text-amber-500/40 group-hover:rotate-12 transition-transform duration-500"></i>
-                        <span class="absolute top-3 left-3 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                            Hip-Hop / Trap
-                        </span>
+                <!-- SOUNDCLOUD STYLE TRACK CARD 3 -->
+                <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                Hip-Hop / Trap
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">4:05</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">Coastal Flow</h3>
+                        <p class="text-sm text-gray-400 mb-6">Full Vocal Recording & Mastering</p>
                     </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-1">Coastal Flow</h3>
-                    <p class="text-sm text-gray-400 mb-4">Full Vocal Recording & Mastering</p>
-                    
-                    <audio controls class="w-full h-10 rounded-lg accent-amber-500 bg-neutral-800">
-                        <source src="/audio/sample-3.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+
+                    <audio id="audio-3" src="/audio/sample-3.mp3"></audio>
+
+                    <div class="bg-neutral-950 border border-neutral-800 rounded-xl p-4 flex items-center space-x-4">
+                        <button onclick="toggleAudio('audio-3', 'btn-3', 'wave-container-3')" id="btn-3" class="w-12 h-12 rounded-full bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center shrink-0 shadow-lg transition-transform active:scale-95">
+                            <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                        </button>
+
+                        <div id="wave-container-3" class="flex-1 h-12 flex items-center gap-[3px] cursor-pointer" onclick="seekAudio(event, 'audio-3')">
+                            <!-- JS will populate interactive bars -->
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -240,16 +274,92 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR MOBILE MENU TOGGLE -->
+    <!-- JAVASCRIPT FOR MOBILE MENU & SOUNDCLOUD WAVEFORM PLAYER -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Hamburger menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // GENERATE SOUNDCLOUD WAVE BARS
+        const containers = ['wave-container-1', 'wave-container-2', 'wave-container-3'];
+        const barCounts = 32;
+
+        containers.forEach(containerId => {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            for (let i = 0; i < barCounts; i++) {
+                const bar = document.createElement('div');
+                // Random height for wave visual effect
+                const heightPercent = Math.floor(Math.random() * 70) + 20; 
+                bar.className = 'wave-bar flex-1 bg-neutral-700 rounded-full';
+                bar.style.height = `${heightPercent}%`;
+                container.appendChild(bar);
+            }
+        });
+
+        // PLAY/PAUSE LOGIC
+        function toggleAudio(audioId, btnId, containerId) {
+            const audio = document.getElementById(audioId);
+            const btn = document.getElementById(btnId);
+
+            // Pause all other audios first
+            document.querySelectorAll('audio').forEach(a => {
+                if (a.id !== audioId) {
+                    a.pause();
+                    a.currentTime = 0;
+                }
+            });
+            // Reset all other buttons
+            document.querySelectorAll('[id^="btn-"]').forEach(b => {
+                b.innerHTML = '<i class="fa-solid fa-play text-lg ml-0.5"></i>';
+            });
+
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '<i class="fa-solid fa-pause text-lg"></i>';
+            } else {
+                audio.pause();
+                btn.innerHTML = '<i class="fa-solid fa-play text-lg ml-0.5"></i>';
+            }
+
+            // Sync visual wave progress on time update
+            audio.ontimeupdate = () => {
+                const progress = audio.currentTime / audio.duration;
+                const waveContainer = document.getElementById(containerId);
+                const bars = waveContainer.querySelectorAll('.wave-bar');
+                const filledBarsCount = Math.floor(progress * bars.length);
+
+                bars.forEach((bar, index) => {
+                    if (index <= filledBarsCount) {
+                        bar.classList.remove('bg-neutral-700');
+                        bar.classList.add('bg-amber-400');
+                    } else {
+                        bar.classList.remove('bg-amber-400');
+                        bar.classList.add('bg-neutral-700');
+                    }
+                });
+            };
+
+            audio.onended = () => {
+                btn.innerHTML = '<i class="fa-solid fa-play text-lg ml-0.5"></i>';
+            };
+        }
+
+        // SEEK AUDIO ON WAVE CLICK
+        function seekAudio(e, audioId) {
+            const audio = document.getElementById(audioId);
+            if (!audio.duration) return;
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = clickX / rect.width;
+            audio.currentTime = percentage * audio.duration;
+        }
     </script>
 </body>
 </html>
