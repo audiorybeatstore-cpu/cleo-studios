@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session | Cleo Studios Mombasa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts for Logo Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#fef08a',
+                            DEFAULT: '#f59e0b',
+                            dark: '#b45309'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-script {
+            font-family: 'Great Vibes', cursive;
+        }
+        /* Custom Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(180deg, #ffe885 0%, #f59e0b 50%, #92400e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 text-gray-100 flex flex-col min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-neutral-900/90 backdrop-blur-md border-b border-amber-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- RECREATED LOGO -->
+            <a href="/" class="flex flex-col items-center justify-center group transform transition duration-300 hover:scale-105">
+                <span class="font-black text-2xl sm:text-3xl tracking-wider gold-gradient-text drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] uppercase">
+                    CLEO
+                </span>
+                <span class="font-script text-xl sm:text-2xl text-amber-300 -mt-2 drop-shadow-[0_2px_2px_rgba(0,0,0,1)]">
+                    Studios
+                </span>
+            </a>
+
+            <!-- DESKTOP NAVIGATION -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium">
+                <a href="/" class="text-gray-300 hover:text-amber-400 transition-colors duration-200">Home</a>
+                <a href="/services/" class="text-gray-300 hover:text-amber-400 transition-colors duration-200">Services</a>
+                <a href="/portfolio/" class="text-gray-300 hover:text-amber-400 transition-colors duration-200">Portfolio</a>
+                <a href="/book-session/" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-1">
+                    Book Session
+                </a>
+            </nav>
+
+            <!-- MOBILE HAMBURGER BUTTON -->
+            <button id="menu-btn" type="button" class="md:hidden text-amber-400 hover:text-amber-300 focus:outline-none p-2 rounded-lg" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DRAWER -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-900 border-b border-amber-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="/" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-neutral-800 hover:text-amber-400 transition-colors">Home</a>
+            <a href="/services/" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-neutral-800 hover:text-amber-400 transition-colors">Services</a>
+            <a href="/portfolio/" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-neutral-800 hover:text-amber-400 transition-colors">Portfolio</a>
+            <a href="/book-session/" class="block px-3 py-2 rounded-md text-amber-400 font-bold bg-neutral-800">
+                Book Session
+            </a>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="py-16 bg-neutral-900 border-b border-neutral-800 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4">
+                Book Your <span class="gold-gradient-text">Studio Session</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                Reserve studio recording time, mix requests, or beat production sessions at Cleo Studios in Bamburi, Mombasa.
+            </p>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM SECTION -->
+    <section class="py-20 bg-neutral-950">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+                
+                <!-- FORMSPREE INTEGRATED FORM -->
+                <form action="https://formspree.io/f/xeajpnwy" method="POST" class="space-y-6">
+                    
+                    <!-- Artist / Full Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-200 mb-2">
+                            Artist / Full Name <span class="text-amber-400">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input type="text" id="name" name="name" required placeholder="e.g. Cleo Beats / John Doe" class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200 placeholder-gray-600">
+                        </div>
+                    </div>
+
+                    <!-- Phone Number & Email -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Phone / WhatsApp <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <input type="tel" id="phone" name="phone" required placeholder="e.g. +254 700 000000" class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200 placeholder-gray-600">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Email Address <span class="text-amber-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="artist@example.com" class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200 placeholder-gray-600">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Selection -->
+                    <div>
+                        <label for="service" class="block text-sm font-semibold text-gray-200 mb-2">
+                            Select Service <span class="text-amber-400">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
+                                <i class="fa-solid fa-sliders"></i>
+                            </span>
+                            <select id="service" name="service" required class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 pl-11 pr-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200 appearance-none">
+                                <option value="" disabled selected>Choose a studio service...</option>
+                                <option value="Vocal Recording Session">Vocal Recording Session</option>
+                                <option value="Mixing & Mastering">Mixing & Mastering</option>
+                                <option value="Custom Beat Production">Custom Beat Production</option>
+                                <option value="Full Project Package (Recording + Mix + Master)">Full Project Package (Recording + Mix + Master)</option>
+                            </select>
+                            <span class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-500">
+                                <i class="fa-solid fa-chevron-down text-sm"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Preferred Date & Time -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Preferred Date <span class="text-amber-400">*</span>
+                            </label>
+                            <input type="date" id="date" name="preferred_date" required class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 px-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200">
+                        </div>
+
+                        <div>
+                            <label for="time" class="block text-sm font-semibold text-gray-200 mb-2">
+                                Preferred Time <span class="text-amber-400">*</span>
+                            </label>
+                            <select id="time" name="preferred_time" required class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 px-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200">
+                                <option value="" disabled selected>Select time block...</option>
+                                <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+                                <option value="Afternoon (1:00 PM - 5:00 PM)">Afternoon (1:00 PM - 5:00 PM)</option>
+                                <option value="Evening (5:00 PM - 9:00 PM)">Evening (5:00 PM - 9:00 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Project Details / Notes -->
+                    <div>
+                        <label for="message" class="block text-sm font-semibold text-gray-200 mb-2">
+                            Project Details / Special Requests
+                        </label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your genre, number of tracks, reference artists, or specific requirements..." class="w-full bg-neutral-950 border border-neutral-800 text-white rounded-xl py-3.5 px-4 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all duration-200 placeholder-gray-600"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black font-bold text-lg py-4 rounded-xl shadow-xl hover:shadow-amber-500/20 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Send Booking Request</span>
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-neutral-900 border-t border-neutral-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Studio Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <a href="/" class="flex flex-col items-start group">
+                        <span class="font-black text-2xl tracking-wider gold-gradient-text uppercase">CLEO</span>
+                        <span class="font-script text-xl text-amber-300 -mt-2">Studios</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Mombasa's creative home for standard music production, recording, and sonic engineering.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 border-l-2 border-amber-500 pl-3">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/" class="text-gray-400 hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="/services/" class="text-gray-400 hover:text-amber-400 transition-colors">Services & Pricing</a></li>
+                        <li><a href="/portfolio/" class="text-gray-400 hover:text-amber-400 transition-colors">Portfolio</a></li>
+                        <li><a href="/book-session/" class="text-gray-400 hover:text-amber-400 transition-colors">Book a Session</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Location Details -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 border-l-2 border-amber-500 pl-3">Location</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot text-amber-400 mt-1 mr-3"></i>
+                            <span>Bamburi, Mombasa - Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-clock text-amber-400 mr-3"></i>
+                            <span>Mon - Sat: 9:00 AM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Social Icons -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4 border-l-2 border-amber-500 pl-3">Connect With Us</h4>
+                    <p class="text-gray-400 text-sm mb-4">Follow Cleo Studios on social media for updates and releases:</p>
+                    <div class="flex space-x-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-neutral-800 text-gray-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-neutral-800 text-gray-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-neutral-800 text-gray-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-neutral-800 text-gray-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fa-brands fa-tiktok text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-neutral-800 text-gray-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-neutral-800 pt-6 text-center text-xs text-gray-500">
+                <p>&copy; <span id="year"></span> Cleo Studios. All rights reserved. Bamburi, Mombasa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU TOGGLE -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
